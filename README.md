@@ -1,2 +1,2 @@
 # laplace_cuda
-Solve Laplace's equation on a 2-D grid using GPU
+This code Solves Laplace's equation on a 2-D grid using GPU.
