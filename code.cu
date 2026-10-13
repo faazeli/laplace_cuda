@@ -172,7 +172,7 @@ int main(void)
       output(u_h, ArraySizeX, ArraySizeY, nsteps);
     }
   
-    if (maxerr < tol)
+    if (fabsf(maxerr) < tol)
     {
       cudaMemcpy(u_h, uold_d, size, cudaMemcpyDeviceToHost);
       printf("Converged after %d iterations.\n", nsteps);
@@ -180,6 +180,7 @@ int main(void)
       cublasDestroy(handle);
       cudaFree(uold_d);
       cudaFree(unew_d);
+      cudaFree(udiff_d);
       free(u_h);
       // clock_t end = clock();
       // time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
@@ -191,12 +192,13 @@ int main(void)
     unew_d = tmp;
   }
 
-  if (maxerr > tol)
+  if (fabsf(maxerr) >= tol)
   {
     printf("Not converged after %d iterations.\n", nsteps);
     cublasDestroy(handle);
     cudaFree(uold_d);
     cudaFree(unew_d);
+    cudaFree(udiff_d);
     free(u_h);
     // clock_t end = clock();
     // time_spent += (double)(end - begin)/ CLOCKS_PER_SEC;
