@@ -1,4 +1,4 @@
-% This MATLAB code visualizes the dump files of code.cu and makes an animated gif
+% This MATLAB code visualizes the dump files of laplace.cu (run it with --dump-every 500) and makes an animated gif
 
 clc
 clear

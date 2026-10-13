@@ -1,0 +1,6 @@
+laplace
+laplace.exe
+*.exp
+*.lib
+*.obj
+solution_iter_*.txt
